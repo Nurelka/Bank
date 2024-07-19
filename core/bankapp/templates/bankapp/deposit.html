@@ -1,0 +1,9 @@
+<!-- templates/accounts/deposit.html -->
+
+<h1>Пополнение баланса</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Пополнить</button>
+</form>

@@ -1,0 +1,9 @@
+<!-- templates/accounts/transfer.html -->
+
+<h1>Перевод средств</h1>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Отправить</button>
+</form>

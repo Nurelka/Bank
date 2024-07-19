@@ -1,0 +1,22 @@
+<!-- templates/accounts/home.html -->
+
+<h1>Добро пожаловать, {{ user_profile.user.username }}!</h1>
+
+<p>Ваш баланс: {{ user_profile.balance }}</p>
+
+<h2>Последние транзакции:</h2>
+<ul>
+    {% for transaction in user_profile.user.transaction_set.all %}
+        <li>
+            {{ transaction.timestamp }} - 
+            {% if transaction.amount < 0 %}
+                {{ transaction.amount }} к {{ transaction.recipient.username }}
+            {% else %}
+                {{ transaction.amount }} от {{ transaction.user.username }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'transfer' %}">Перевод средств</a>
+<a href="{% url 'deposit' %}">Пополнение баланса</a>
